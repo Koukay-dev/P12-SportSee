@@ -1,0 +1,11 @@
+.profileBanner {
+  margin-bottom: 70px;
+  & h1 {
+    font-size: 48px;
+    font-weight: 500;
+    margin-bottom: 40px;
+    & span {
+      color: #ff0101;
+    }
+  }
+}
