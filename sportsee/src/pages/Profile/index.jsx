@@ -1,26 +1,57 @@
+import { useContext } from "react";
+import { DataContext } from "../../context/DataContext";
+
 import "../../style/profile.css";
-import { useState } from "react";
+
+/* Composants */
 import ProfileBanner from "../../components/ProfileBanner";
-import { useContext, useEffect } from "react";
+import NutritionInfoCard from "../../components/NutritionInfoCard";
+import DailyActivityChart from "../../components/DailyActivityChart";
+import PerformanceChart from "../../components/PerformanceChart";
+import ScoreChart from "../../components/scoreChart";
+import AverageSessionsChart from "../../components/AverageSessionsCharts";
 
+// Images
+import caloriesIcon from '../../assets/img/nutritionIcons/calories-icon.png'
+import proteinIcon from '../../assets/img/nutritionIcons/protein-icon.png'
+import carbsIcon from '../../assets/img/nutritionIcons/carbs-icon.png'
+import fatIcon from '../../assets/img/nutritionIcons/fat-icon.png'
+
+
+/**
+ * Initialise toute la page et les composants correspondant au profil utilisateur
+ * @returns {React.JSX.Element}
+ */
 export default function UserProfile() {
-  const [ userData, setUserData ] = useState({});
+  const { userData, userActivity, userAverageSessions, userPerformance, loading} = useContext(DataContext);
 
-  useEffect(() => {
-    // id 12 et 18 pour les calls
-    fetch(`http://localhost:3001/user/18`)
-      .then((response) => response.json())
-      .then(( { data }) => {
-        setUserData(data);
-      });
-  }, []);
-  console.log(userData)
+  if(loading){
+    return ''
+  }
+  console.log(userData, userActivity, userAverageSessions, userPerformance)
+
   return (
     <main>
       <ProfileBanner
         name={userData.userInfos.firstName}
         motivLine="Félicitation ! Vous avez explosé vos objectifs hier 👏"
       />
+      <section className="mainContent">
+        <div className="left-content">
+          <DailyActivityChart data={userActivity}/>
+          <div className="bottomCharts">
+            <AverageSessionsChart data={userAverageSessions}/>
+            <PerformanceChart data={userPerformance} />
+            <ScoreChart score={userData.score ? userData.score : userData.todayScore}/>
+          </div>
+        </div>
+        <div className="sideInfo">
+          <NutritionInfoCard imgLink={caloriesIcon} value={userData.keyData.calorieCount} unitSymbol='kCal' valueType='Calories' />
+          <NutritionInfoCard imgLink={proteinIcon} value={userData.keyData.proteinCount} unitSymbol='g' valueType='Protein' />
+          <NutritionInfoCard imgLink={carbsIcon} value={userData.keyData.carbohydrateCount} unitSymbol='g' valueType='Glucides' />
+          <NutritionInfoCard imgLink={fatIcon} value={userData.keyData.lipidCount} unitSymbol='g' valueType='Lipides' />
+        </div>
+      </section>
     </main>
   );
 }

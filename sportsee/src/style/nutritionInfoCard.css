@@ -1,0 +1,28 @@
+.nutritionInfoCard {
+    max-width: 260px;
+  border-radius: 5px;
+  background: #fbfbfb;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.02);
+  margin-bottom: 20px;
+  display: flex;
+  padding: 32px;
+
+  & .nutritionInfoCard-text {
+    margin-left: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    & .nutritionInfoCard-text-value {
+      color: #282d30;
+      font-size: 20px;
+      font-weight: 700;
+     
+    }
+    & .nutritionInfoCard-text-valueType {
+      color: #74798c;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+.legend-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-inline: 16px;
+  & span {
+    margin-left: 8px;
+    color: #74798c;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}

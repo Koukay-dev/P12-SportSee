@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
+// Style
+import './style/GlobalStyle.css'
 /* Pages */
 import Profile from './pages/Profile'
-
 /* Components */
 import Header from './components/Header';
 import LeftNav from './components/LeftNav';
+/* Context */
+import { DataProvider } from './context/DataContext';
 
-// Style
-import './style/GlobalStyle.css'
+const userId = 12
+// const userId = 18
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,7 +19,9 @@ root.render(
     <Header/>
     <div className='lowerContent'>
       <LeftNav/>
-      <Profile />
+      <DataProvider userId={userId}>
+        <Profile />
+      </DataProvider>
     </div>
   </React.StrictMode>
 );
