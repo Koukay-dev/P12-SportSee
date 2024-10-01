@@ -15,6 +15,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-inline: 10px;
         & > img {
             margin-block: 10px;
         }

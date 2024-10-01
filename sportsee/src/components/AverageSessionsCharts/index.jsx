@@ -46,7 +46,7 @@ const ASCustomAxisTick = (props) => {
   return (
     <g transform={`translate(${x}, ${y}) scale(1)`}> {/* Application de scaleX */}
       <text
-        x={0}
+        x={27}
         y={0}
         dy={10}
         textAnchor="middle" // Centre le texte
@@ -66,7 +66,7 @@ export default function AverageSessionsChart({ data }) {
       length: session.sessionLength,
     };
   });
-  console.log(averageSessions);
+  
   return (
     <article className="average-sessions-chart">
       <h3>Durée moyenne des<br/>sessions</h3>
@@ -85,6 +85,7 @@ export default function AverageSessionsChart({ data }) {
             </linearGradient>
           </defs>
           <XAxis
+            className="AS-XAxis"
             dataKey="day"
             tickLine={false}
             tick={<ASCustomAxisTick/>}

@@ -17,6 +17,9 @@ import proteinIcon from '../../assets/img/nutritionIcons/protein-icon.png'
 import carbsIcon from '../../assets/img/nutritionIcons/carbs-icon.png'
 import fatIcon from '../../assets/img/nutritionIcons/fat-icon.png'
 
+const isEmpty = (obj) => {
+  return Object.keys(obj).length === 0;
+};
 
 /**
  * Initialise toute la page et les composants correspondant au profil utilisateur
@@ -24,6 +27,13 @@ import fatIcon from '../../assets/img/nutritionIcons/fat-icon.png'
  */
 export default function UserProfile() {
   const { userData, userActivity, userAverageSessions, userPerformance, loading} = useContext(DataContext);
+
+  // Vérifie qu'il n'y a pas d'objet vide
+  if(isEmpty(userData) || isEmpty(userActivity) || isEmpty(userAverageSessions) || isEmpty(userPerformance)){
+    return (
+      <main><h1>Erreur, il semblerait avoir un problème avec vos informations</h1></main>
+    )
+  }
 
   if(loading){
     return ''

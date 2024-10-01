@@ -55,7 +55,7 @@ export default function DailyActivityChart({ data = {} }) {
           <DailyActivityLegend fillColor="#E60000" text="Calories brûlées (kCal)" />
         </div>
       </div>
-      <ResponsiveContainer height={250}>
+      <ResponsiveContainer height={200}>
         <BarChart
           data={sessions}
           margin={{ top: 50, right: 30, left: 45, bottom: 30 }}
