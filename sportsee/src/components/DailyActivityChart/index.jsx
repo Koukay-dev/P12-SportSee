@@ -7,6 +7,7 @@ import {
   YAxis,
   Tooltip,
   Bar,
+  Rectangle
 } from "recharts";
 import DailyActivityLegend from "../DailyActivityLegend";
 
@@ -21,6 +22,20 @@ const DACustomTooltip = ({ active = false, payload = [], label = '' }) => {
   }
 
   return null;
+};
+
+const DACustomCursor = (props) => {
+  const {width,x, y ,height} = props;
+  return (
+    <Rectangle
+      fill="rgba(196, 196, 196, 0.50)"
+      stroke="none"
+      x={x - 35} 
+      y={y}
+      width={width + 70}
+      height={height} 
+    />
+  );
 };
 
 export default function DailyActivityChart({ data = {} }) {
@@ -66,7 +81,7 @@ export default function DailyActivityChart({ data = {} }) {
             orientation="right"
           />
           <YAxis hide yAxisId="calories" orientation="left" />
-          <Tooltip content={<DACustomTooltip />} />
+          <Tooltip content={<DACustomTooltip />} cursor={<DACustomCursor/>} />
           <Bar
             dataKey="kilogram"
             barSize={7}

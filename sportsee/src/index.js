@@ -10,8 +10,10 @@ import LeftNav from './components/LeftNav';
 /* Context */
 import { DataProvider } from './context/DataContext';
 
-const userId = 12
-// const userId = 18
+// const userId = 12
+const userId = 18
+
+/* Note, pour passer des données de l'API aux données mockées, il suffit de modifier la variable situé dans ./constant/useMockedData.js */
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

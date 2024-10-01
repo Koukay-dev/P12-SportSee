@@ -1,6 +1,5 @@
-// src/services/dataBus.js
-
 const API_URL = "http://localhost:3001/user";
+
 /**
  * Effectue un call API pour récupérer les données sur la
  * route : http://localhost:3000/user/${userId} 

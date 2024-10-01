@@ -28,5 +28,8 @@
       font-size: 10px;
       font-weight: 500;
     }
+    & .DArectangle{
+      fill: #425bbd;
+    }
   }
 }

@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from "react";
+import { useMockedData } from "../../constant/useMockedData";
 import { fetchUserData, fetchUserActivity, fetchUserAverageSessions, fetchUserPerformance } from "../../services/dataBus";
+import { fetchMockedUserData, fetchMockedUserActivity, fetchMockedUserAverageSessions, fetchMockedUserPerformance } from "../../services/mockedDataBus";
 
 export const DataContext = createContext();
 
@@ -17,7 +19,7 @@ export const DataProvider = ({ children, userId }) => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Charger toutes les données en parallèle
+    // fonction pour récupérer les données de l'API
     const loadData = async () => {
       const [data, activity, averageSessions, performance] = await Promise.all([
         fetchUserData(userId),
@@ -34,7 +36,29 @@ export const DataProvider = ({ children, userId }) => {
       setLoading(false)
     };
 
-    loadData();
+    // Fonction pour récupérer les données mocké
+    const loadMockedData = async () => {
+      const [data, activity, averageSessions, performance] = await Promise.all([
+        fetchMockedUserData(userId),
+        fetchMockedUserActivity(userId),
+        fetchMockedUserAverageSessions(userId),
+        fetchMockedUserPerformance(userId)
+      ]);
+      if (data) setUserData(data);
+      if (activity) setUserActivity(activity);
+      if (averageSessions) setUserAverageSessions(averageSessions);
+      if (performance) setUserPerformance(performance);
+      
+      //Si la data a fini de charger
+      setLoading(false)
+    };
+
+    if(useMockedData){
+      loadMockedData();
+    } else {
+      loadData();
+    }
+    
   }, [userId]);
 
   return (
