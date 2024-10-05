@@ -15,7 +15,11 @@ const trad = {
   energy: "Energie",
   cardio: "Cardio",
 };
-
+/**
+ * Affiche le graphique de performance
+ * @param {object} data 
+ * @returns 
+ */
 export default function PerformanceChart({ data = {} }) {
   const performanceData = data.data.map((value, i) => {
     return {

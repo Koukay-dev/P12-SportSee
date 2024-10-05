@@ -22,7 +22,7 @@ const isEmpty = (obj) => {
 };
 
 /**
- * Initialise toute la page et les composants correspondant au profil utilisateur
+ * Initialise et affiche tout les composants correspondant au profil utilisateur
  * @returns {React.JSX.Element}
  */
 export default function UserProfile() {

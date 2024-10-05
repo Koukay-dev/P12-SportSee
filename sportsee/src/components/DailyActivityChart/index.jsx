@@ -37,7 +37,11 @@ const DACustomCursor = (props) => {
     />
   );
 };
-
+/**
+ * Affiche le graphique des activitées quotidienne
+ * @param {object} data 
+ * @returns 
+ */
 export default function DailyActivityChart({ data = {} }) {
   const sessions = data.sessions.map((session) => {
     return {

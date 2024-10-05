@@ -1,6 +1,12 @@
 import "../../style/scoreChart.css";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
+
+/**
+ * Affiche le graphique du score de l'objectif quotidien
+ * @param {object} score 
+ * @returns 
+ */
 export default function ScoreChart({ score }) {
   
   score = score * 100

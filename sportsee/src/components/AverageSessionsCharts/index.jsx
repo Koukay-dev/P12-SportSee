@@ -58,6 +58,11 @@ const ASCustomAxisTick = (props) => {
   );
 };
 
+/**
+ * Affiche le graphique de la durée moyenne des sessions 
+ * @param {object} data
+ * @returns 
+ */
 export default function AverageSessionsChart({ data }) {
 
   const averageSessions = data.sessions.map((session) => {
