@@ -17,8 +17,11 @@ import proteinIcon from '../../assets/img/nutritionIcons/protein-icon.png'
 import carbsIcon from '../../assets/img/nutritionIcons/carbs-icon.png'
 import fatIcon from '../../assets/img/nutritionIcons/fat-icon.png'
 
-const isEmpty = (obj) => {
-  return Object.keys(obj).length === 0;
+const isEmptyOrUndefined = (obj) => {
+  if( !obj || Object.keys(obj).length === 0){
+    return true;
+  }
+  return false;
 };
 
 /**
@@ -29,9 +32,9 @@ export default function UserProfile() {
   const { userData, userActivity, userAverageSessions, userPerformance, loading} = useContext(DataContext);
 
   // Vérifie qu'il n'y a pas d'objet vide
-  if(isEmpty(userData) || isEmpty(userActivity) || isEmpty(userAverageSessions) || isEmpty(userPerformance)){
+  if(isEmptyOrUndefined(userData) || isEmptyOrUndefined(userActivity) || isEmptyOrUndefined(userAverageSessions) || isEmptyOrUndefined(userPerformance)){
     return (
-      <main><h1>Erreur, il semblerait avoir un problème avec vos informations</h1></main>
+      <main style={{height: '73vh'}}><h1>Erreur, il semblerait avoir un problème avec vos informations</h1></main>
     )
   }
 

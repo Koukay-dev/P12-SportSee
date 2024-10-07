@@ -41,7 +41,7 @@ export default function ScoreChart({ score }) {
             data={[{ name: "InnerCircle", value: 100 }]} // Un seul segment pour le cercle blanc
             innerRadius={0} // Centre du cercle
             outerRadius={67} // La même taille que le rayon intérieur de la barre de progression
-            fill="#FFFFFF" // Remplissage blanc
+            fill="#FFFFFF"
             isAnimationActive={false}
           />
         </PieChart>

@@ -10,8 +10,10 @@ import LeftNav from './components/LeftNav';
 /* Context */
 import { DataProvider } from './context/DataContext';
 
-// const userId = 12
-const userId = 18
+
+// mettre "?userid=18" ou "?userid=12" dans l'url pour naviguer entre les utilisateurs 
+const queryParams = new URLSearchParams(window.location.search);
+const userId = queryParams.get('userid') ?? false;
 
 /* Note, pour passer des données de l'API aux données mockées, il suffit de modifier la variable situé dans ./constant/useMockedData.js */
 

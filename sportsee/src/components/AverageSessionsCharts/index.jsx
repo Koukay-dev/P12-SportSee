@@ -44,7 +44,7 @@ const ASCustomAxisTick = (props) => {
   const { x, y, payload } = props;
 
   return (
-    <g transform={`translate(${x}, ${y}) scale(1)`}> {/* Application de scaleX */}
+    <g transform={`translate(${x}, ${y})`}> {/* Application de scaleX */}
       <text
         x={27}
         y={0}
