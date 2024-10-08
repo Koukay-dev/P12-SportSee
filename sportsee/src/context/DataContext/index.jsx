@@ -1,9 +1,12 @@
 import { createContext, useState, useEffect } from "react";
 import { useMockedData } from "../../constant/useMockedData";
+import User  from "../../models/User.js"
 import { fetchUserData, fetchUserActivity, fetchUserAverageSessions, fetchUserPerformance } from "../../services/dataBus";
 import { fetchMockedUserData, fetchMockedUserActivity, fetchMockedUserAverageSessions, fetchMockedUserPerformance } from "../../services/mockedDataBus";
 
 export const DataContext = createContext();
+
+const user = new User();
 
 /**
  * Effectue tout les calls API en parallèle et va les rendre accessible à tout les 
@@ -27,10 +30,23 @@ export const DataProvider = ({ children, userId }) => {
         fetchUserAverageSessions(userId),
         fetchUserPerformance(userId)
       ]);
-      if (data) setUserData(data.data);
-      if (activity) setUserActivity(activity.data);
-      if (averageSessions) setUserAverageSessions(averageSessions.data);
-      if (performance) setUserPerformance(performance.data);
+      if (data) {
+        user.setUserData(data.data)
+        setUserData(user.userData);
+      }
+      if (activity) {
+        user.setUserActivity(activity.data)
+        setUserActivity(user.userActivity)
+      };
+      if (averageSessions) {
+        user.setUserAverageSessions(averageSessions.data)
+        setUserAverageSessions(user.userAverageSessions)
+      };
+      if (performance) {
+        user.setUserPerformance(performance.data)
+        console.log(user)
+        setUserPerformance(user.userPerformance)
+      };
       
       //Si la data a fini de charger
       setLoading(false)
@@ -44,10 +60,23 @@ export const DataProvider = ({ children, userId }) => {
         fetchMockedUserAverageSessions(userId),
         fetchMockedUserPerformance(userId)
       ]);
-      if (data) setUserData(data);
-      if (activity) setUserActivity(activity);
-      if (averageSessions) setUserAverageSessions(averageSessions);
-      if (performance) setUserPerformance(performance);
+      if (data) {
+        user.setUserData(data.data)
+        setUserData(user.userData);
+      }
+      if (activity) {
+        user.setUserActivity(activity.data)
+        setUserActivity(user.userActivity)
+      };
+      if (averageSessions) {
+        user.setUserAverageSessions(averageSessions.data)
+        setUserAverageSessions(user.userAverageSessions)
+      };
+      if (performance) {
+        user.setUserPerformance(performance.data)
+        console.log(user)
+        setUserPerformance(user.userPerformance)
+      };
       
       //Si la data a fini de charger
       setLoading(false)

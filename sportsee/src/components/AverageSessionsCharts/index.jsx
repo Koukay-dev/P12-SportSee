@@ -10,7 +10,6 @@ import {
   Rectangle,
 } from "recharts";
 
-const days = ["L", "M", "M", "J", "V", "S", "D"];
 
 const ASCustomTooltip = ({ active = false, payload = [] }) => {
   if (active && payload && payload.length) {
@@ -63,22 +62,14 @@ const ASCustomAxisTick = (props) => {
  * @param {object} data
  * @returns 
  */
-export default function AverageSessionsChart({ data }) {
-
-  const averageSessions = data.sessions.map((session) => {
-    return {
-      day: days[session.day - 1],
-      length: session.sessionLength,
-    };
-  });
-  
+export default function AverageSessionsChart({ data }) {  
   return (
     <article className="average-sessions-chart">
       <h3>Durée moyenne des<br/>sessions</h3>
       <ResponsiveContainer>
         <LineChart
           margin={{ top: 0, right: -1, left: -1, bottom: 0 }}
-          data={averageSessions}
+          data={data}
         >
           {/* Définition du dégradé */}
           <defs>

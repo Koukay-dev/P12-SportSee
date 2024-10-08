@@ -43,13 +43,6 @@ const DACustomCursor = (props) => {
  * @returns 
  */
 export default function DailyActivityChart({ data = {} }) {
-  const sessions = data.sessions.map((session) => {
-    return {
-      day: parseInt(session.day.split("-")[2]),
-      kilogram: session.kilogram,
-      calories: session.calories,
-    };
-  });
   return (
     <article className="daily-activity-chart">
       <div className="DA-title-legend">
@@ -61,7 +54,7 @@ export default function DailyActivityChart({ data = {} }) {
       </div>
       <ResponsiveContainer height={200}>
         <BarChart
-          data={sessions}
+          data={data}
           margin={{ top: 50, right: 30, left: 45, bottom: 30 }}
         >
           <CartesianGrid vertical={false} stroke="#DEDEDE" strokeDasharray="3 3" />

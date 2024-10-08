@@ -7,34 +7,26 @@ import {
   Radar,
 } from "recharts";
 
-const trad = {
-  intensity: "Intensité",
-  speed: "Vitesse",
-  strength: "Force",
-  endurance: "Endurance",
-  energy: "Energie",
-  cardio: "Cardio",
-};
 /**
  * Affiche le graphique de performance
  * @param {object} data 
  * @returns 
  */
 export default function PerformanceChart({ data = {} }) {
-  const performanceData = data.data.map((value, i) => {
-    return {
-      subject: trad[data.kind[value.kind]],
-      value: value.value,
-      fullMark: 250,
-    };
-  });
-  const sortedPerformanceData = [];
+  // const performanceData = data.data.map((value, i) => {
+  //   return {
+  //     subject: trad[data.kind[value.kind]],
+  //     value: value.value,
+  //     fullMark: 250,
+  //   };
+  // });
+  // const sortedPerformanceData = [];
 
-  Object.values(trad).forEach((subject) => {
-    sortedPerformanceData.push(
-      performanceData.find((element) => element.subject === subject)
-    );
-  });
+  // Object.values(trad).forEach((subject) => {
+  //   sortedPerformanceData.push(
+  //     performanceData.find((element) => element.subject === subject)
+  //   );
+  // });
 
   return (
     <article className="performanceChart">
@@ -43,7 +35,7 @@ export default function PerformanceChart({ data = {} }) {
           outerRadius={90}
           width={260}
           height={260}
-          data={sortedPerformanceData}
+          data={data}
           
         >
           <PolarGrid stroke='#FFFFFF' radialLines={false} polarRadius={[10, 20, 45, 70]}/>
